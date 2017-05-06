@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "nodemon server.js",
-    "tunnel": "./node_modules/localtunnel/bin/client --port 3000"
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,13 @@
 name: foosly
 description: foosly
 avatar: .beepboop/avatar.png
+config:
+- name: MONGODB_URI
+  friendly_name: Mongo DB URI
+  type: text
+  global: true
+- name: STORE_PROVIDER
+  friendly_name: Store Provider
+  type: text
+  default: mongo
+  global: true

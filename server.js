@@ -13,7 +13,7 @@ const slapp = Slapp({
 
 // response to the user typing "help"
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say('tough')
+  msg.say('hello')
 });
 
 // attach Slapp to express server
