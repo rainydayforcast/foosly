@@ -1,0 +1,27 @@
+{
+  "name": "foosly",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "watch": "nodemon server.js",
+    "tunnel": "./node_modules/localtunnel/bin/client --port 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaeljacobdavis/foosly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/michaeljacobdavis/foosly/issues"
+  },
+  "homepage": "https://github.com/michaeljacobdavis/foosly#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "slapp": "^2.1.0",
+    "slapp-context-beepboop": "^1.3.0",
+    "slapp-convo-beepboop": "^1.0.1"
+  },
+  "devDependencies": {
+    "localtunnel": "^1.8.2",
+    "nodemon": "^1.11.0"
+  }
+}
