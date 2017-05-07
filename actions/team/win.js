@@ -3,7 +3,7 @@ const state = require('lib/state');
 const gamesStore = require('stores/games');
 const usersStore = require('stores/users');
 const respond = require('lib/respond');
-const stats = require('messages/stats');
+const stats = require('messages/stats').callback;
 
 exports.callbackId = require('./id');
 exports.name = 'team';

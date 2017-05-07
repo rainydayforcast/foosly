@@ -4,7 +4,7 @@ const win = require('actions/team/win');
 
 module.exports = (players, teams) => teams.reduce((message, team, index) =>
   message.attachment()
-    .text(`Team ${index}`)
+    .text(`Team ${index + 1}`)
     .callbackId(teamCallbackId)
     .field()
       .title('Players')
@@ -16,7 +16,7 @@ module.exports = (players, teams) => teams.reduce((message, team, index) =>
     .end()
     .button()
       .name(win.name)
-      .text(`Team ${index} Won`)
+      .text(`Team ${index + 1} Won`)
       .type('button')
       .value(index)
     .end()
