@@ -3,6 +3,7 @@ const state = require('lib/state');
 const gamesStore = require('stores/games');
 const usersStore = require('stores/users');
 const respond = require('lib/respond');
+const stats = require('messages/stats');
 
 exports.callbackId = require('./id');
 exports.name = 'team';
@@ -27,7 +28,8 @@ exports.callback = async (msg, val) => {
       state.del(scope)
     ]);
 
-    return respond(msg, require('responses/winner')(currentGame.players, currentGame.teams[val]).json());
+    respond(msg, require('responses/winner')(currentGame.players, currentGame.teams[val]).json());
+    return stats(msg);
   } catch (e) {
     console.log(e);
     return msg.say(require('responses/error')().json());
