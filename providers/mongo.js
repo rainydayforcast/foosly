@@ -8,8 +8,8 @@ const wrapCallback = (resolve, reject) => (e, ...v) => {
 module.exports = (collection) => {
   const db = monk(process.env.MONGODB_URI);
   return {
-    add: (scope, entry) => new Promised(
-      (resolve, reject) => b.get(`${scope}_${collection}`).insert(entry, wrapCallback(resolve, reject))
+    add: (scope, entry) => new Promise(
+      (resolve, reject) => db.get(`${scope}_${collection}`).insert(entry, wrapCallback(resolve, reject))
     ),
     update: (scope, search, entry) => new Promise(
       (resolve, reject) => db.get(`${scope}_${collection}`).update(search, entry, wrapCallback(resolve, reject))

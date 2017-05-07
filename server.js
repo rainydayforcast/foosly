@@ -11,9 +11,11 @@ registerMessages(bot, [
 ]);
 
 registerActions(bot, [
+  require('actions/game/start'),
+  require('actions/game/stop'),
   require('actions/player/join'),
   require('actions/player/leave'),
-  require('actions/game/stop')
+  require('actions/team/win')
 ]);
 
 // attach Slapp to express server
