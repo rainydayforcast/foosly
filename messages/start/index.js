@@ -12,7 +12,10 @@ exports.callback = async (msg) => {
     const user = await getUser(msg.meta.bot_token, msg.meta.user_id);
     if (!currentGame) {
       currentGame = {
-        players: {},
+        players: {
+          123: 'zzz',
+          222: 'ccc'
+        },
         teams: {}
       };
     }
@@ -22,6 +25,6 @@ exports.callback = async (msg) => {
     return msg.say(require('responses/current-game')(currentGame).json());
   } catch (e) {
     console.log(e);
-    return msg.say('Sorry, something went wrong!');
+    return msg.say(require('responses/error')().json());
   }
 };

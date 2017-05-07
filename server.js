@@ -9,9 +9,11 @@ const port = process.env.PORT || 3000;
 registerMessages(bot, [
   require('messages/start')
 ]);
+
 registerActions(bot, [
   require('actions/player/join'),
-  require('actions/player/leave')
+  require('actions/player/leave'),
+  require('actions/game/stop')
 ]);
 
 // attach Slapp to express server
