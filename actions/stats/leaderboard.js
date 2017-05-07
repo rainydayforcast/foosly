@@ -23,7 +23,7 @@ exports.callback = async (msg) => {
   }, {});
 
   if (rankings.length){
-    return respond(msg, require('responses/leaderboard')(
+    return respond(msg, require('responses/stats/leaderboard')(
       rankings.map((user, index) =>
         `${index + 1}) ${userMap[user.id]} (${users.getRankingForPretty(user.id)}%)`
       ).join('\n')
