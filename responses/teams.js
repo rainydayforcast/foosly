@@ -2,8 +2,11 @@ const smb = require('slack-message-builder');
 const teamCallbackId = require('actions/team/id');
 const win = require('actions/team/win');
 
+const colors = ['#D32F2F', '#03A9F4'];
+
 module.exports = (players, teams) => teams.reduce((message, team, index) =>
   message.attachment()
+    .color(colors[index])
     .text(`Team ${index + 1}`)
     .callbackId(teamCallbackId)
     .field()
