@@ -1,5 +1,4 @@
 const _ = require('lodash').runInContext();
-const userStore = require('stores/users');
 const constant = 10;
 
 module.exports = (users) => {

@@ -1,6 +1,6 @@
 const getScope = require('lib/scope');
 const state = require('lib/state');
-const userStore = require('stores/users');
+const usersStore = require('stores/users');
 const respond = require('lib/respond');
 
 exports.callbackId = require('./id');
@@ -10,7 +10,7 @@ exports.callback = async (msg) => {
   try {
     const scope = getScope(msg.meta.team_id, msg.meta.channel_id);
     const currentGame = await state.get(scope);
-    const users = await userStore.get(scope);
+    const users = await usersStore.get(scope);
 
     const rankings = Object.keys(currentGame.players).map(id => {
       return {

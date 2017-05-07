@@ -7,7 +7,8 @@ const registerActions = require('lib/register-actions');
 const port = process.env.PORT || 3000;
 
 registerMessages(bot, [
-  require('messages/start')
+  require('messages/start'),
+  require('messages/stats')
 ]);
 
 registerActions(bot, [

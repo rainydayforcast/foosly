@@ -12,7 +12,7 @@ exports.callback = async (msg) => {
     const scope = getScope(msg.meta.team_id, msg.meta.channel_id);
     const currentGame = await state.get(scope);
     const user = await getUser(msg.meta.bot_token, msg.meta.user_id);
-    const name = user.profile.real_name || user.name;
+    const name = user.real_name || user.name;
     currentGame.players[msg.meta.user_id] = name;
     await state.set(scope, currentGame);
     if (Object.keys(currentGame.players).length >= 4) {
