@@ -2,9 +2,11 @@
   "name": "foosly",
   "version": "1.0.0",
   "description": "",
+  "main": "lib/server",
   "scripts": {
-    "start": "NODE_PATH=. node server.js",
-    "watch": "NODE_PATH=. nodemon --inspect server.js"
+    "start": "NODE_PATH=lib node lib/server.js",
+    "watch": "NODE_PATH=lib nodemon --inspect lib/server.js",
+    "test": "eslint lib/* --ext .js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "slapp-convo-beepboop": "^1.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^3.19.0",
     "localtunnel": "^1.8.2",
     "nodemon": "^1.11.0"
