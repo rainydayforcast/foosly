@@ -3,7 +3,7 @@ const state = require('lib/state');
 const gamesStore = require('stores/games');
 const usersStore = require('stores/users');
 const respond = require('lib/respond');
-const stats = require('messages/stats').callback;
+const leaderboard = require('actions/stats/leaderboard').callback;
 
 exports.callbackId = require('./id');
 exports.name = 'team';
@@ -28,7 +28,7 @@ exports.callback = async (msg, val) => {
   ]);
 
   respond(msg, require('responses/winner')(currentGame.players, currentGame.teams[val]).json());
-  return stats(msg);
+  return leaderboard(msg);
 };
 
 async function incrementStat (scope, key, id) {

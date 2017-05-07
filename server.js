@@ -14,6 +14,7 @@ registerMessages(bot, [
 registerActions(bot, [
   require('actions/game/start'),
   require('actions/game/stop'),
+  require('actions/stats/leaderboard'),
   require('actions/player/join'),
   require('actions/player/leave'),
   require('actions/team/win')
