@@ -1,6 +1,7 @@
 const getScope = require('lib/scope');
 const getUser = require('lib/get-user');
 const state = require('lib/state');
+const join = require('actions/player/join').callback;
 
 exports.criteria = '^start';
 exports.typeFilter = 'direct_mention';
@@ -16,13 +17,11 @@ exports.callback = async (msg) => {
           123: 'zzz',
           222: 'ccc'
         },
-        teams: {}
+        teams: []
       };
     }
-
-    currentGame.players[msg.meta.user_id] = user.profile.real_name || user.name
     await state.set(scope, currentGame);
-    return msg.say(require('responses/current-game')(currentGame).json());
+    return join(msg);
   } catch (e) {
     console.log(e);
     return msg.say(require('responses/error')().json());
