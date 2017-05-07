@@ -8,32 +8,27 @@ const stats = require('messages/stats').callback;
 exports.callbackId = require('./id');
 exports.name = 'team';
 exports.callback = async (msg, val) => {
-  try {
-    const scope = getScope(msg.meta.team_id, msg.meta.channel_id);
-    const currentGame = await state.get(scope);
-    await Promise.all([
-      // Register players wins/losses
-      Promise.all(currentGame.teams.map((team, index) =>
-        Promise.all(team.map(id => incrementStat(scope, val == index ? 'wins' : 'losses', id)))
-      )),
+  const scope = getScope(msg.meta.team_id, msg.meta.channel_id);
+  const currentGame = await state.get(scope);
+  await Promise.all([
+    // Register players wins/losses
+    Promise.all(currentGame.teams.map((team, index) =>
+      Promise.all(team.map(id => incrementStat(scope, val == index ? 'wins' : 'losses', id)))
+    )),
 
-      // Record game
-      gamesStore.add(scope, {
-        winner: currentGame.teams[val],
-        loser: currentGame.teams[val == 0 ? 1 : 0],
-        timestamp: new Date().getTime()
-      }),
+    // Record game
+    gamesStore.add(scope, {
+      winner: currentGame.teams[val],
+      loser: currentGame.teams[val == 0 ? 1 : 0],
+      timestamp: new Date().getTime()
+    }),
 
-      // Reset scope
-      state.del(scope)
-    ]);
+    // Reset scope
+    state.del(scope)
+  ]);
 
-    respond(msg, require('responses/winner')(currentGame.players, currentGame.teams[val]).json());
-    return stats(msg);
-  } catch (e) {
-    console.log(e);
-    return msg.say(require('responses/error')().json());
-  }
+  respond(msg, require('responses/winner')(currentGame.players, currentGame.teams[val]).json());
+  return stats(msg);
 };
 
 async function incrementStat (scope, key, id) {
