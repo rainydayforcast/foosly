@@ -1,23 +1,21 @@
 const express = require('express');
-const Slapp = require('slapp');
+const bot = require('bot');
 const ConvoStore = require('slapp-convo-beepboop');
 const Context = require('slapp-context-beepboop');
-
+const registerMessages = require('lib/register-messages');
+const registerActions = require('lib/register-actions');
 const port = process.env.PORT || 3000;
 
-const slapp = Slapp({
-  verify_token: process.env.SLACK_VERIFY_TOKEN,
-  convo_store: ConvoStore(),
-  context: Context()
-});
-
-// response to the user typing "help"
-slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say('hello')
-});
+registerMessages(bot, [
+  require('messages/start')
+]);
+registerActions(bot, [
+  require('actions/player/join'),
+  require('actions/player/leave')
+]);
 
 // attach Slapp to express server
-var server = slapp.attachToExpress(express());
+var server = bot.attachToExpress(express());
 
 // start http server
 server.listen(port, (err) => {
