@@ -22,6 +22,7 @@
     "lodash": "^4.17.4",
     "mongodb": "^2.2.26",
     "monk": "^4.0.0",
+    "request-promise-native": "^1.0.4",
     "redis": "^2.7.1",
     "slack-message-builder": "^1.1.0",
     "slapp": "^2.1.0",
