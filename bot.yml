@@ -11,3 +11,7 @@ config:
   type: text
   default: mongo
   global: true
+- name: REDIS_URI
+  friendly_name: Redis URI
+  type: text
+  global: true
