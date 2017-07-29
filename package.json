@@ -2,7 +2,7 @@
   "name": "foosly",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/server",
+  "main": "server",
   "scripts": {
     "start": "NODE_PATH=lib node lib/server.js",
     "watch": "NODE_PATH=lib nodemon --inspect lib/server.js",
