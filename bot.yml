@@ -15,3 +15,7 @@ config:
   friendly_name: Redis URI
   type: text
   global: true
+- name: GRAPHING_URI_BASE
+  friendly_name: Graphing URI
+  type: text
+  global: true
