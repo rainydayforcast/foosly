@@ -1,11 +1,12 @@
 const getScope = require('utilities/scope');
-const state = require('utilities/state');
+const state = require('effects/commands/state');
+const utilities = require('effects/commands/utilities');
 
 exports.callbackId = require('./id');
 exports.name = 'game';
 exports.value = 'stop';
-exports.callback = async (msg) => {
+exports.callback = function* (msg) {
   const scope = getScope(msg.meta.team_id, msg.meta.channel_id);
-  await state.del(scope);
-  return msg.respond(msg.body.response_url, require('responses/game-stopped')().json());
+  yield state.commands.del(scope);
+  return yield utilities.commands.respond(msg, require('responses/game-stopped')().json());
 };

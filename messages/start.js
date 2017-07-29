@@ -12,10 +12,11 @@ exports.callback = async (msg) => {
   await getUser(msg.meta.bot_token, msg.meta.user_id);
   if (!currentGame) {
     currentGame = {
-      players: {/*
+      players: {
         123: 'zzz',
-        222: 'ccc'
-      */},
+        222: 'cca',
+        223: 'ccc'
+      },
       teams: []
     };
   }
